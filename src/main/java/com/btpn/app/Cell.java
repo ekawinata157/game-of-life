@@ -11,6 +11,9 @@ public class Cell {
     }
 
     boolean isDead() {
+        if(neighboringLivingCell==2){
+            return false;
+        }
         return true;
     }
 }
