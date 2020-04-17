@@ -1,19 +1,22 @@
 package com.btpn.app;
 
 public class Cell {
+    enum State {
+        ALIVE, DEAD;
+    }
 
     private int neighboringLivingCell;
-    private int neighboringDeadCell;
+    private State state;
 
-    Cell(int neighboringLivingCell, int neighboringDeadCell) {
+    Cell(int neighboringLivingCell, State state) {
         this.neighboringLivingCell = neighboringLivingCell;
-        this.neighboringDeadCell = neighboringDeadCell;
+        this.state = state;
     }
 
     boolean isDead() {
-        if(neighboringLivingCell==2){
-            return false;
+        if(state==State.ALIVE) {
+            return !(neighboringLivingCell==2 || neighboringLivingCell==3);
         }
-        return true;
+        return !(neighboringLivingCell==3);
     }
 }
