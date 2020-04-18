@@ -8,7 +8,7 @@ class GameOfLife {
     int countLivingCells() {
         int count = 0;
         for (HashMap.Entry<Coordinate, Cell> entry : grid.entrySet()) {
-            if (entry.getValue().equals(Cell.createLivingCell())) {
+            if (!entry.getValue().isDead()) {
                 count++;
             }
         }
@@ -18,7 +18,7 @@ class GameOfLife {
     int countDeadCells() {
         int count = 0;
         for (HashMap.Entry<Coordinate, Cell> entry : grid.entrySet()) {
-            if (entry.getValue().equals(Cell.createDeadCell())) {
+            if (entry.getValue().isDead()) {
                 count++;
             }
         }
@@ -49,7 +49,8 @@ class GameOfLife {
     int countNeighboringLivingCells(Coordinate coordinate) {
         int count = 0;
         for (Coordinate neighboringCellCoordinate : coordinate.getNeighboringCoordinates()) {
-            if (grid.containsKey(neighboringCellCoordinate) && Cell.createLivingCell().equals(grid.get(neighboringCellCoordinate))) {
+            Cell cellToCheck = grid.get(neighboringCellCoordinate);
+            if (grid.containsKey(neighboringCellCoordinate) && !cellToCheck.isDead()) {
                 count++;
             }
         }
@@ -58,7 +59,7 @@ class GameOfLife {
 
     @Override
     public String toString() {
-        StringBuilder livingCells = new StringBuilder("");
+        StringBuilder livingCells = new StringBuilder();
         ArrayList<Coordinate> livingCellsCoordinate = new ArrayList<>();
         for (HashMap.Entry<Coordinate, Cell> entry : grid.entrySet()) {
             if (!entry.getValue().isDead()) {
