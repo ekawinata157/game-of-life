@@ -26,8 +26,8 @@ class Coordinate implements Comparable<Coordinate> {
 
     @Override
     public int hashCode() {
-        int tmp = (y + ((x + 1) / 2));
-        return x + (tmp * tmp);
+        int temp = (y + ((x + 1) / 2));
+        return x + (temp * temp);
     }
 
     Coordinate translate(int xTranslation, int yTranslation) {
@@ -51,7 +51,6 @@ class Coordinate implements Comparable<Coordinate> {
     public String toString() {
         return this.x + "," + this.y;
     }
-
 
     @Override
     public int compareTo(Coordinate coordinate) {

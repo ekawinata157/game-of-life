@@ -26,8 +26,7 @@ public class Main {
             livingCellsCoordinate.add(coordinate);
         }
 
-        gameOfLife.seed(livingCellsCoordinate);
-        gameOfLife.updateGameState();
+        gameOfLife.getNextGeneration(livingCellsCoordinate);
         System.out.println(gameOfLife);
     }
 }

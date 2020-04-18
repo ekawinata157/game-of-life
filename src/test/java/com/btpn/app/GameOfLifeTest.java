@@ -20,7 +20,7 @@ class GameOfLifeTest {
         int expectedLivingCellCount = 4;
         int expectedDeadCellCount = 12;
 
-        boolean result = (gameOfLife.countLivingCell() == expectedLivingCellCount) && (gameOfLife.countDeadCell() == expectedDeadCellCount);
+        boolean result = (gameOfLife.countLivingCells() == expectedLivingCellCount) && (gameOfLife.countDeadCells() == expectedDeadCellCount);
 
         assertTrue(result);
     }
@@ -38,7 +38,7 @@ class GameOfLifeTest {
         int expectedLivingCellCount = 5;
         int expectedDeadCellCount = 17;
 
-        boolean result = (gameOfLife.countLivingCell() == expectedLivingCellCount) && (gameOfLife.countDeadCell() == expectedDeadCellCount);
+        boolean result = (gameOfLife.countLivingCells() == expectedLivingCellCount) && (gameOfLife.countDeadCells() == expectedDeadCellCount);
 
         assertTrue(result);
     }

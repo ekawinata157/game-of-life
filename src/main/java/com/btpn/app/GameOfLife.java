@@ -8,7 +8,7 @@ import static com.btpn.app.Cell.*;
 class GameOfLife {
     private HashMap<Coordinate, Cell> grid = new HashMap<>();
 
-    int countLivingCell() {
+    int countLivingCells() {
         int count = 0;
         for (HashMap.Entry<Coordinate, Cell> entry : grid.entrySet()) {
             if (entry.getValue().equals(new Cell(State.LIVING))) {
@@ -18,7 +18,7 @@ class GameOfLife {
         return count;
     }
 
-    int countDeadCell() {
+    int countDeadCells() {
         int count = 0;
         for (HashMap.Entry<Coordinate, Cell> entry : grid.entrySet()) {
             if (entry.getValue().equals(new Cell(State.DEAD))) {
@@ -28,10 +28,10 @@ class GameOfLife {
         return count;
     }
 
-    void seed(HashSet<Coordinate> livingCellInput) {
+    void seed(HashSet<Coordinate> livingCellInputs) {
         this.grid = new HashMap<>();
-        HashSet<Coordinate> deadCellsCoordinate = this.generateAdjacentDeadCells(livingCellInput);
-        for (Coordinate livingCellCoordinate : livingCellInput) {
+        HashSet<Coordinate> deadCellsCoordinate = this.generateAdjacentDeadCells(livingCellInputs);
+        for (Coordinate livingCellCoordinate : livingCellInputs) {
             grid.put(livingCellCoordinate, new Cell(State.LIVING));
         }
         for (Coordinate deadCellCoordinate : deadCellsCoordinate) {
@@ -69,7 +69,6 @@ class GameOfLife {
             }
         }
         Collections.sort(livingCellsCoordinate);
-
         for (Coordinate coordinate : livingCellsCoordinate) {
             livingCells += coordinate + "\n";
         }
@@ -88,5 +87,10 @@ class GameOfLife {
             }
         }
         this.seed(nextGenerationLivingCell);
+    }
+
+    void getNextGeneration(HashSet<Coordinate> livingCellsCoordinateInput) {
+        this.seed(livingCellsCoordinateInput);
+        updateGameState();
     }
 }
