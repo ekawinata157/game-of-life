@@ -34,14 +34,4 @@ class Cell {
         Cell cell = (Cell) o;
         return state == cell.state;
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(state);
-    }
-
-    @Override
-    public String toString() {
-        return this.state.toString();
-    }
 }

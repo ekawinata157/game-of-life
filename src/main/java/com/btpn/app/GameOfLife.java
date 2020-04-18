@@ -75,7 +75,7 @@ class GameOfLife {
         return livingCells.toString();
     }
 
-    void updateGameState() {
+    private void updateGameState() {
         HashSet<Coordinate> nextGenerationLivingCell = new HashSet<>();
         for (HashMap.Entry<Coordinate, Cell> entry : grid.entrySet()) {
             Coordinate currentCoordinate = entry.getKey();
@@ -89,10 +89,8 @@ class GameOfLife {
         this.seed(nextGenerationLivingCell);
     }
 
-    void promptNextGeneration(HashSet<Coordinate> livingCellsCoordinateInput, int iteration) {
+    void promptNextGeneration(HashSet<Coordinate> livingCellsCoordinateInput) {
         this.seed(livingCellsCoordinateInput);
-        for (int i = 0; i < iteration; i++) {
-            updateGameState();
-        }
+        updateGameState();
     }
 }

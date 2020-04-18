@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         GameOfLife gameOfLife = new GameOfLife();
-        gameOfLife.promptNextGeneration(handleUserInput(), 1);
+        gameOfLife.promptNextGeneration(handleUserInput());
         System.out.println(gameOfLife);
     }
 
