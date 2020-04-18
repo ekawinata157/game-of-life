@@ -1,14 +1,22 @@
 package com.btpn.app;
 
 class Cell {
-    enum State {
+    private enum State {
         LIVING, DEAD
     }
 
     private State state;
 
-    Cell(State state) {
+    private Cell(State state) {
         this.state = state;
+    }
+
+    static Cell createLivingCell() {
+        return new Cell(State.LIVING);
+    }
+
+    static Cell createDeadCell() {
+        return new Cell(State.DEAD);
     }
 
     boolean isDead() {

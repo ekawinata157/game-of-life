@@ -2,15 +2,13 @@ package com.btpn.app;
 
 import java.util.*;
 
-import static com.btpn.app.Cell.*;
-
 class GameOfLife {
     private HashMap<Coordinate, Cell> grid = new HashMap<>();
 
     int countLivingCells() {
         int count = 0;
         for (HashMap.Entry<Coordinate, Cell> entry : grid.entrySet()) {
-            if (entry.getValue().equals(new Cell(State.LIVING))) {
+            if (entry.getValue().equals(Cell.createLivingCell())) {
                 count++;
             }
         }
@@ -20,7 +18,7 @@ class GameOfLife {
     int countDeadCells() {
         int count = 0;
         for (HashMap.Entry<Coordinate, Cell> entry : grid.entrySet()) {
-            if (entry.getValue().equals(new Cell(State.DEAD))) {
+            if (entry.getValue().equals(Cell.createDeadCell())) {
                 count++;
             }
         }
@@ -31,11 +29,11 @@ class GameOfLife {
         this.grid = new HashMap<>();
         HashSet<Coordinate> deadCellsCoordinate = this.generateNeighboringDeadCells(livingCellInputs);
         for (Coordinate livingCellCoordinate : livingCellInputs) {
-            grid.put(livingCellCoordinate, new Cell(State.LIVING));
+            grid.put(livingCellCoordinate, Cell.createLivingCell());
         }
         for (Coordinate deadCellCoordinate : deadCellsCoordinate) {
             if (!grid.containsKey(deadCellCoordinate)) {
-                grid.put(deadCellCoordinate, new Cell(State.DEAD));
+                grid.put(deadCellCoordinate, Cell.createDeadCell());
             }
         }
     }
@@ -51,7 +49,7 @@ class GameOfLife {
     int countNeighboringLivingCells(Coordinate coordinate) {
         int count = 0;
         for (Coordinate neighboringCellCoordinate : coordinate.getNeighboringCoordinates()) {
-            if (grid.containsKey(neighboringCellCoordinate) && new Cell(State.LIVING).equals(grid.get(neighboringCellCoordinate))) {
+            if (grid.containsKey(neighboringCellCoordinate) && Cell.createLivingCell().equals(grid.get(neighboringCellCoordinate))) {
                 count++;
             }
         }
