@@ -1,15 +1,21 @@
 package com.btpn.app;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        GameOfLife gameOfLife = new GameOfLife();
+        gameOfLife.promptNextGeneration(handleUserInput(), 1);
+        System.out.println(gameOfLife);
+    }
+
+    private static HashSet<Coordinate> handleUserInput(){
         final String INPUT_DELIMITER = "next";
         final String COORDINATE_SEPARATOR = ",";
-        Scanner scanner = new Scanner(System.in);
         HashSet<Coordinate> livingCellsCoordinate = new HashSet<>();
-        GameOfLife gameOfLife = new GameOfLife();
+        Scanner scanner = new Scanner(System.in);
 
         while (true) {
             String input = scanner.nextLine();
@@ -21,8 +27,6 @@ public class Main {
             Coordinate coordinate = new Coordinate(Integer.valueOf(coordinateString[0]), Integer.valueOf(coordinateString[1]));
             livingCellsCoordinate.add(coordinate);
         }
-
-        gameOfLife.promptNextGeneration(livingCellsCoordinate, 1);
-        System.out.println(gameOfLife);
+        return livingCellsCoordinate;
     }
 }
