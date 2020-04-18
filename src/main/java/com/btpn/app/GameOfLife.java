@@ -1,8 +1,6 @@
 package com.btpn.app;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+import java.util.*;
 
 
 import static com.btpn.app.Cell.*;
@@ -64,10 +62,16 @@ class GameOfLife {
     @Override
     public String toString() {
         String livingCells = "";
+        ArrayList<Coordinate> livingCellsCoordinate = new ArrayList<>();
         for (HashMap.Entry<Coordinate, Cell> entry : grid.entrySet()) {
             if (!entry.getValue().isDead()) {
-                livingCells += entry.getKey().toString() + "\n";
+                livingCellsCoordinate.add(entry.getKey());
             }
+        }
+        Collections.sort(livingCellsCoordinate);
+
+        for (Coordinate coordinate : livingCellsCoordinate) {
+            livingCells += coordinate + "\n";
         }
         return livingCells;
     }
@@ -79,7 +83,7 @@ class GameOfLife {
             Cell currentCell = entry.getValue();
             int surroundingLivingCellCount = this.countNeighboringLivingCells(currentCoordinate);
             Cell updatedCell = currentCell.updateCellState(surroundingLivingCellCount);
-            if(!updatedCell.isDead()){
+            if (!updatedCell.isDead()) {
                 nextGenerationLivingCell.add(currentCoordinate);
             }
         }

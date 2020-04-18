@@ -2,7 +2,7 @@ package com.btpn.app;
 
 import java.util.ArrayList;
 
-class Coordinate {
+class Coordinate implements Comparable<Coordinate> {
     private int x;
     private int y;
 
@@ -25,18 +25,17 @@ class Coordinate {
     }
 
     @Override
-    public int hashCode()
-    {
-        int tmp = ( y +  ((x+1)/2));
-        return x +  ( tmp * tmp);
+    public int hashCode() {
+        int tmp = (y + ((x + 1) / 2));
+        return x + (tmp * tmp);
     }
 
     Coordinate translate(int xTranslation, int yTranslation) {
         return new Coordinate(this.x + xTranslation, this.y + yTranslation);
     }
 
-    ArrayList<Coordinate> getAdjacentCoordinates(){
-        ArrayList<Coordinate> adjacentCoordinates=new ArrayList<>();
+    ArrayList<Coordinate> getAdjacentCoordinates() {
+        ArrayList<Coordinate> adjacentCoordinates = new ArrayList<>();
         adjacentCoordinates.add(this.translate(1, 0));
         adjacentCoordinates.add(this.translate(1, -1));
         adjacentCoordinates.add(this.translate(0, -1));
@@ -50,6 +49,15 @@ class Coordinate {
 
     @Override
     public String toString() {
-        return this.x +","+ this.y;
+        return this.x + "," + this.y;
+    }
+
+
+    @Override
+    public int compareTo(Coordinate coordinate) {
+        if (this.x == coordinate.x) {
+            return Integer.compare(this.y, coordinate.y);
+        }
+        return Integer.compare(this.x, coordinate.x);
     }
 }

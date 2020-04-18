@@ -21,7 +21,6 @@ class GameOfLifeTest {
         int expectedDeadCellCount = 12;
 
         boolean result = (gameOfLife.countLivingCell() == expectedLivingCellCount) && (gameOfLife.countDeadCell() == expectedDeadCellCount);
-        System.out.println(gameOfLife);
         assertTrue(result);
     }
 
@@ -39,7 +38,6 @@ class GameOfLifeTest {
         int expectedDeadCellCount = 17;
 
         boolean result = (gameOfLife.countLivingCell() == expectedLivingCellCount) && (gameOfLife.countDeadCell() == expectedDeadCellCount);
-        System.out.println(gameOfLife);
         assertTrue(result);
     }
 
@@ -85,7 +83,7 @@ class GameOfLifeTest {
         livingCellInput.add(new Coordinate(2, 1));
         livingCellInput.add(new Coordinate(2, 2));
         gameOfLife.seed(livingCellInput);
-        String expected = "1,1\n 1,2\n 2,1\n 2,2\n";
+        String expected = "1,1\n1,2\n2,1\n2,2\n";
 
         gameOfLife.updateGameState();
         String result = gameOfLife.toString();
@@ -103,7 +101,7 @@ class GameOfLifeTest {
         livingCellInput.add(new Coordinate(0, 2));
         livingCellInput.add(new Coordinate(1, 2));
         gameOfLife.seed(livingCellInput);
-        String expected = "0,1\n1,0\n2,1\n0,2\n1,2\n";
+        String expected = "0,1\n0,2\n1,0\n1,2\n2,1\n";
 
         gameOfLife.updateGameState();
         String result = gameOfLife.toString();
@@ -119,7 +117,26 @@ class GameOfLifeTest {
         livingCellInput.add(new Coordinate(1, 0));
         livingCellInput.add(new Coordinate(1, 2));
         gameOfLife.seed(livingCellInput);
-        String expected = "1,1\n0,1\n2,1";
+        String expected = "0,1\n1,1\n2,1\n";
+
+        gameOfLife.updateGameState();
+        String result = gameOfLife.toString();
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void updateGameState_shouldMakeToStringReturn0And2_1And1_1And4_2And1_2And4_3And3_whenInputIsToadPattern() {
+        GameOfLife gameOfLife = new GameOfLife();
+        HashSet<Coordinate> livingCellInput = new HashSet<>();
+        livingCellInput.add(new Coordinate(1, 1));
+        livingCellInput.add(new Coordinate(1, 2));
+        livingCellInput.add(new Coordinate(1, 3));
+        livingCellInput.add(new Coordinate(2, 2));
+        livingCellInput.add(new Coordinate(2, 3));
+        livingCellInput.add(new Coordinate(2, 4));
+        gameOfLife.seed(livingCellInput);
+        String expected = "0,2\n1,1\n1,4\n2,1\n2,4\n3,3\n";
 
         gameOfLife.updateGameState();
         String result = gameOfLife.toString();
