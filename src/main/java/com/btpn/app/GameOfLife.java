@@ -2,7 +2,6 @@ package com.btpn.app;
 
 import java.util.*;
 
-
 import static com.btpn.app.Cell.*;
 
 class GameOfLife {
