@@ -60,7 +60,7 @@ class GameOfLife {
 
     @Override
     public String toString() {
-        String livingCells = "";
+        StringBuilder livingCells = new StringBuilder("");
         ArrayList<Coordinate> livingCellsCoordinate = new ArrayList<>();
         for (HashMap.Entry<Coordinate, Cell> entry : grid.entrySet()) {
             if (!entry.getValue().isDead()) {
@@ -69,9 +69,10 @@ class GameOfLife {
         }
         Collections.sort(livingCellsCoordinate);
         for (Coordinate coordinate : livingCellsCoordinate) {
-            livingCells += coordinate + "\n";
+            livingCells.append(coordinate);
+            livingCells.append("\n");
         }
-        return livingCells;
+        return livingCells.toString();
     }
 
     void updateGameState() {
