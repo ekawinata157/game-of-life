@@ -34,7 +34,7 @@ class Coordinate implements Comparable<Coordinate> {
         return new Coordinate(this.x + xTranslation, this.y + yTranslation);
     }
 
-    ArrayList<Coordinate> getAdjacentCoordinates() {
+    ArrayList<Coordinate> getNeighboringCoordinates() {
         ArrayList<Coordinate> adjacentCoordinates = new ArrayList<>();
         adjacentCoordinates.add(this.translate(1, 0));
         adjacentCoordinates.add(this.translate(1, -1));

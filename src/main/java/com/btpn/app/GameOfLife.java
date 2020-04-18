@@ -44,14 +44,14 @@ class GameOfLife {
     private HashSet<Coordinate> generateAdjacentDeadCells(HashSet<Coordinate> livingCellsCoordinate) {
         HashSet<Coordinate> deadCells = new HashSet<>();
         for (Coordinate livingCellCoordinate : livingCellsCoordinate) {
-            deadCells.addAll(livingCellCoordinate.getAdjacentCoordinates());
+            deadCells.addAll(livingCellCoordinate.getNeighboringCoordinates());
         }
         return deadCells;
     }
 
     int countNeighboringLivingCells(Coordinate coordinate) {
         int count = 0;
-        for (Coordinate neighboringCellCoordinate : coordinate.getAdjacentCoordinates()) {
+        for (Coordinate neighboringCellCoordinate : coordinate.getNeighboringCoordinates()) {
             if (grid.containsKey(neighboringCellCoordinate) && new Cell(State.ALIVE).equals(grid.get(neighboringCellCoordinate))) {
                 count++;
             }
