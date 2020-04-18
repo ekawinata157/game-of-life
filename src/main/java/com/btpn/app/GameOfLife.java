@@ -30,7 +30,7 @@ class GameOfLife {
 
     void seed(HashSet<Coordinate> livingCellInputs) {
         this.grid = new HashMap<>();
-        HashSet<Coordinate> deadCellsCoordinate = this.generateAdjacentDeadCells(livingCellInputs);
+        HashSet<Coordinate> deadCellsCoordinate = this.generateNeighboringDeadCells(livingCellInputs);
         for (Coordinate livingCellCoordinate : livingCellInputs) {
             grid.put(livingCellCoordinate, new Cell(State.LIVING));
         }
@@ -41,7 +41,7 @@ class GameOfLife {
         }
     }
 
-    private HashSet<Coordinate> generateAdjacentDeadCells(HashSet<Coordinate> livingCellsCoordinate) {
+    private HashSet<Coordinate> generateNeighboringDeadCells(HashSet<Coordinate> livingCellsCoordinate) {
         HashSet<Coordinate> deadCells = new HashSet<>();
         for (Coordinate livingCellCoordinate : livingCellsCoordinate) {
             deadCells.addAll(livingCellCoordinate.getNeighboringCoordinates());
