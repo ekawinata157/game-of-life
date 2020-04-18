@@ -7,7 +7,7 @@ import java.util.HashSet;
 import static com.btpn.app.Cell.*;
 
 class GameOfLife {
-    private HashMap<Coordinate, Cell> grid = new HashMap<Coordinate, Cell>();
+    private HashMap<Coordinate, Cell> grid = new HashMap<>();
 
     int countLivingCell() {
         int count = 0;
@@ -41,18 +41,22 @@ class GameOfLife {
         }
     }
 
-    HashSet<Coordinate> generateAdjacentDeadCells(HashSet<Coordinate> livingCellsCoordinate) {
+    private HashSet<Coordinate> generateAdjacentDeadCells(HashSet<Coordinate> livingCellsCoordinate) {
         HashSet<Coordinate> deadCells = new HashSet<>();
         for (Coordinate livingCellCoordinate : livingCellsCoordinate) {
-            for(Coordinate adjacentOfLivingCellCoordinate : livingCellCoordinate.getAdjacentCoordinates()){
-                deadCells.add(adjacentOfLivingCellCoordinate);
-            }
+            deadCells.addAll(livingCellCoordinate.getAdjacentCoordinates());
         }
         return deadCells;
     }
 
-    int countNeighboringLivingCells(Coordinate coordinate){
-        return 3;
+    int countNeighboringLivingCells(Coordinate coordinate) {
+        int count=0;
+        for(Coordinate neighboringCellCoordinate : coordinate.getAdjacentCoordinates()){
+            if(grid.containsKey(neighboringCellCoordinate) && new Cell(State.ALIVE).equals(grid.get(neighboringCellCoordinate))){
+                count++;
+            }
+        }
+        return count;
     }
 
 
