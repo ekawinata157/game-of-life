@@ -35,16 +35,16 @@ class Coordinate implements Comparable<Coordinate> {
     }
 
     ArrayList<Coordinate> getNeighboringCoordinates() {
-        ArrayList<Coordinate> adjacentCoordinates = new ArrayList<>();
-        adjacentCoordinates.add(this.translate(1, 0));
-        adjacentCoordinates.add(this.translate(1, -1));
-        adjacentCoordinates.add(this.translate(0, -1));
-        adjacentCoordinates.add(this.translate(-1, -1));
-        adjacentCoordinates.add(this.translate(-1, 0));
-        adjacentCoordinates.add(this.translate(-1, 1));
-        adjacentCoordinates.add(this.translate(0, 1));
-        adjacentCoordinates.add(this.translate(1, 1));
-        return adjacentCoordinates;
+        ArrayList<Coordinate> neighboringCoordinates = new ArrayList<>();
+        neighboringCoordinates.add(this.translate(1, 0));
+        neighboringCoordinates.add(this.translate(1, -1));
+        neighboringCoordinates.add(this.translate(0, -1));
+        neighboringCoordinates.add(this.translate(-1, -1));
+        neighboringCoordinates.add(this.translate(-1, 0));
+        neighboringCoordinates.add(this.translate(-1, 1));
+        neighboringCoordinates.add(this.translate(0, 1));
+        neighboringCoordinates.add(this.translate(1, 1));
+        return neighboringCoordinates;
     }
 
     @Override

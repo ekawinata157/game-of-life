@@ -21,6 +21,7 @@ class GameOfLifeTest {
         int expectedDeadCellCount = 12;
 
         boolean result = (gameOfLife.countLivingCell() == expectedLivingCellCount) && (gameOfLife.countDeadCell() == expectedDeadCellCount);
+
         assertTrue(result);
     }
 
@@ -38,6 +39,7 @@ class GameOfLifeTest {
         int expectedDeadCellCount = 17;
 
         boolean result = (gameOfLife.countLivingCell() == expectedLivingCellCount) && (gameOfLife.countDeadCell() == expectedDeadCellCount);
+
         assertTrue(result);
     }
 

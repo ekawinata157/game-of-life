@@ -4,7 +4,7 @@ import java.util.Objects;
 
 class Cell {
     enum State {
-        ALIVE, DEAD;
+        LIVING, DEAD
     }
 
     private State state;
@@ -18,11 +18,11 @@ class Cell {
     }
 
     Cell updateCellState(int neighboringLivingCell) {
-        if (this.state == State.ALIVE && (neighboringLivingCell < 2 || neighboringLivingCell > 3)) {
+        if (this.state == State.LIVING && (neighboringLivingCell < 2 || neighboringLivingCell > 3)) {
             return new Cell(State.DEAD);
         }
         if (this.state == State.DEAD && neighboringLivingCell == 3) {
-            return new Cell(State.ALIVE);
+            return new Cell(State.LIVING);
         }
         return new Cell(this.state);
     }
