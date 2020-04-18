@@ -1,6 +1,6 @@
 package com.btpn.app;
 
-public class Cell {
+class Cell {
     enum State {
         ALIVE, DEAD;
     }
@@ -14,9 +14,10 @@ public class Cell {
     }
 
     boolean isDead() {
-        if(state==State.ALIVE) {
-            return !(neighboringLivingCell==2 || neighboringLivingCell==3);
-        }
-        return !(neighboringLivingCell==3);
+        return true;
+    }
+
+    void updateCellState(){
+
     }
 }
