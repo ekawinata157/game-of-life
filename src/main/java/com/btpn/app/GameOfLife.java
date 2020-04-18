@@ -1,9 +1,8 @@
 package com.btpn.app;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
+
 
 import static com.btpn.app.Cell.*;
 
@@ -45,15 +44,10 @@ class GameOfLife {
     HashSet<Coordinate> generateAdjacentDeadCells(HashSet<Coordinate> livingCellsCoordinate) {
         HashSet<Coordinate> deadCells = new HashSet<>();
 
-        for (Coordinate coordinate : livingCellsCoordinate) {
-            deadCells.add(coordinate.translate(1, 0));
-            deadCells.add(coordinate.translate(1, -1));
-            deadCells.add(coordinate.translate(0, -1));
-            deadCells.add(coordinate.translate(-1, -1));
-            deadCells.add(coordinate.translate(-1, 0));
-            deadCells.add(coordinate.translate(-1, 1));
-            deadCells.add(coordinate.translate(0, 1));
-            deadCells.add(coordinate.translate(1, 1));
+        for (Coordinate livingCellCoordinate : livingCellsCoordinate) {
+            for(Coordinate adjacentOfLivingCellCoordinate : livingCellCoordinate.getAdjacentCoordinates()){
+                deadCells.add(adjacentOfLivingCellCoordinate);
+            }
         }
         return deadCells;
     }
@@ -68,4 +62,9 @@ class GameOfLife {
         temp += this.countLivingCell() + " " + this.countDeadCell();
         return temp;
     }
+
+    void updateCellsState() {
+
+    }
+
 }

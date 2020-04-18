@@ -1,5 +1,7 @@
 package com.btpn.app;
 
+import java.util.ArrayList;
+
 class Coordinate {
     private int x;
     private int y;
@@ -31,6 +33,19 @@ class Coordinate {
 
     Coordinate translate(int xTranslation, int yTranslation) {
         return new Coordinate(this.x + xTranslation, this.y + yTranslation);
+    }
+
+    ArrayList<Coordinate> getAdjacentCoordinates(){
+        ArrayList<Coordinate> adjacentCoordinates=new ArrayList<>();
+        adjacentCoordinates.add(this.translate(1, 0));
+        adjacentCoordinates.add(this.translate(1, -1));
+        adjacentCoordinates.add(this.translate(0, -1));
+        adjacentCoordinates.add(this.translate(-1, -1));
+        adjacentCoordinates.add(this.translate(-1, 0));
+        adjacentCoordinates.add(this.translate(-1, 1));
+        adjacentCoordinates.add(this.translate(0, 1));
+        adjacentCoordinates.add(this.translate(1, 1));
+        return adjacentCoordinates;
     }
 
     @Override

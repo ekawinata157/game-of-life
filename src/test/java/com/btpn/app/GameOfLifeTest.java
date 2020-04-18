@@ -1,12 +1,9 @@
 package com.btpn.app;
 
-import com.btpn.app.Cell.State;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
 import java.util.HashSet;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GameOfLifeTest {
