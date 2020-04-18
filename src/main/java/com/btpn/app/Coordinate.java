@@ -32,7 +32,7 @@ class Coordinate implements Comparable<Coordinate> {
         return x + (temp * temp);
     }
 
-    Coordinate translate(int xTranslation, int yTranslation) {
+    private Coordinate translate(int xTranslation, int yTranslation) {
         return new Coordinate(this.x + xTranslation, this.y + yTranslation);
     }
 

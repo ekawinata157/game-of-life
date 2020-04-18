@@ -1,6 +1,5 @@
 package com.btpn.app;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Scanner;
 
@@ -11,7 +10,7 @@ public class Main {
         System.out.println(gameOfLife);
     }
 
-    private static HashSet<Coordinate> handleUserInput(){
+    private static HashSet<Coordinate> handleUserInput() {
         final String INPUT_DELIMITER = "next";
         final String COORDINATE_SEPARATOR = ",";
         HashSet<Coordinate> livingCellsCoordinate = new HashSet<>();
