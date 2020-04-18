@@ -26,7 +26,7 @@ public class Main {
             livingCellsCoordinate.add(coordinate);
         }
 
-        gameOfLife.getNextGeneration(livingCellsCoordinate);
+        gameOfLife.promptNextGeneration(livingCellsCoordinate);
         System.out.println(gameOfLife);
     }
 }
