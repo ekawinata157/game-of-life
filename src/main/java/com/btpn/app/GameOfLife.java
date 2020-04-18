@@ -89,8 +89,10 @@ class GameOfLife {
         this.seed(nextGenerationLivingCell);
     }
 
-    void promptNextGeneration(HashSet<Coordinate> livingCellsCoordinateInput) {
+    void promptNextGeneration(HashSet<Coordinate> livingCellsCoordinateInput, int iteration) {
         this.seed(livingCellsCoordinateInput);
-        updateGameState();
+        for(int i=0;i<iteration;i++){
+            updateGameState();
+        }
     }
 }
