@@ -1,7 +1,5 @@
 package com.btpn.app;
 
-import java.util.Objects;
-
 class Cell {
     enum State {
         LIVING, DEAD
