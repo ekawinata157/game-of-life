@@ -16,10 +16,6 @@ public class Main {
             if (input.equals("next")) {
                 break;
             }
-            userInputs.add(input);
-        }
-
-        for (String input : userInputs) {
             String[] coordinateString;
             coordinateString = input.split(",");
             Coordinate coordinate = new Coordinate(Integer.valueOf(coordinateString[0]), Integer.valueOf(coordinateString[1]));
