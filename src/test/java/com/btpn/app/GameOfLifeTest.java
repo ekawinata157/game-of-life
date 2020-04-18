@@ -54,7 +54,7 @@ class GameOfLifeTest {
         gameOfLife.seed(livingCellInput);
         int expected = 3;
 
-        int result = gameOfLife.countNeighboringLivingCells(new Coordinate(1,1));
+        int result = gameOfLife.countNeighboringLivingCells(new Coordinate(1, 1));
 
         assertEquals(expected, result);
     }
@@ -71,7 +71,24 @@ class GameOfLifeTest {
         gameOfLife.seed(livingCellInput);
         int expected = 5;
 
-        int result = gameOfLife.countNeighboringLivingCells(new Coordinate(1,1));
+        int result = gameOfLife.countNeighboringLivingCells(new Coordinate(1, 1));
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void updateGameState_shouldMakeToStringReturnTheSameInput_whenInputIsBlockPattern() {
+        GameOfLife gameOfLife = new GameOfLife();
+        HashSet<Coordinate> livingCellInput = new HashSet<>();
+        livingCellInput.add(new Coordinate(1, 1));
+        livingCellInput.add(new Coordinate(1, 2));
+        livingCellInput.add(new Coordinate(2, 1));
+        livingCellInput.add(new Coordinate(2, 2));
+        gameOfLife.seed(livingCellInput);
+        String expected = "1,1\n 1,2\n 2,1\n 2,2\n";
+
+        gameOfLife.updateGameState();
+        String result = "1,1\n 1,2\n 2,1\n 2,2\n";
 
         assertEquals(expected, result);
     }

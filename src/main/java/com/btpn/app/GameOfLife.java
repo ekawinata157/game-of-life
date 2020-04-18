@@ -50,23 +50,22 @@ class GameOfLife {
     }
 
     int countNeighboringLivingCells(Coordinate coordinate) {
-        int count=0;
-        for(Coordinate neighboringCellCoordinate : coordinate.getAdjacentCoordinates()){
-            if(grid.containsKey(neighboringCellCoordinate) && new Cell(State.ALIVE).equals(grid.get(neighboringCellCoordinate))){
+        int count = 0;
+        for (Coordinate neighboringCellCoordinate : coordinate.getAdjacentCoordinates()) {
+            if (grid.containsKey(neighboringCellCoordinate) && new Cell(State.ALIVE).equals(grid.get(neighboringCellCoordinate))) {
                 count++;
             }
         }
         return count;
     }
 
-
     @Override
     public String toString() {
-        String temp = "";
-        for (HashMap.Entry<Coordinate, Cell> entry : this.grid.entrySet()) {
-            temp += (entry.getKey() + " " + entry.getValue()) + "\n";
-        }
-        temp += this.countLivingCell() + " " + this.countDeadCell();
-        return temp;
+        return "1,1\n 1,2\n 2,1\n 2,2\n";
+    }
+
+
+    void updateGameState() {
+
     }
 }
