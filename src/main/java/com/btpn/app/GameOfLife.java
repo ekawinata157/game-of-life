@@ -31,7 +31,7 @@ class GameOfLife {
     }
 
     void seed(HashSet<Coordinate> livingCellInput) {
-        this.grid=new HashMap<>();
+        this.grid = new HashMap<>();
         HashSet<Coordinate> deadCellsCoordinate = this.generateAdjacentDeadCells(livingCellInput);
         for (Coordinate livingCellCoordinate : livingCellInput) {
             grid.put(livingCellCoordinate, new Cell(State.ALIVE));
@@ -63,16 +63,26 @@ class GameOfLife {
 
     @Override
     public String toString() {
-        String livingCells="";
-        for(HashMap.Entry<Coordinate, Cell> entry : grid.entrySet()){
-            if(!entry.getValue().isDead()){
-                livingCells+=entry.getKey().toString()+"\n";
+        String livingCells = "";
+        for (HashMap.Entry<Coordinate, Cell> entry : grid.entrySet()) {
+            if (!entry.getValue().isDead()) {
+                livingCells += entry.getKey().toString() + "\n";
             }
         }
         return livingCells;
     }
 
     void updateGameState() {
-
+        HashSet<Coordinate> nextGenerationLivingCell = new HashSet<>();
+        for (HashMap.Entry<Coordinate, Cell> entry : grid.entrySet()) {
+            Coordinate currentCoordinate = entry.getKey();
+            Cell currentCell = entry.getValue();
+            int surroundingLivingCellCount = this.countNeighboringLivingCells(currentCoordinate);
+            Cell updatedCell = currentCell.updateCellState(surroundingLivingCellCount);
+            if(!updatedCell.isDead()){
+                nextGenerationLivingCell.add(currentCoordinate);
+            }
+        }
+        this.seed(nextGenerationLivingCell);
     }
 }

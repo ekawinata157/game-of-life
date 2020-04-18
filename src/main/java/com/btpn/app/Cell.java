@@ -19,12 +19,12 @@ class Cell {
 
     Cell updateCellState(int neighboringLivingCell) {
         if (this.state == State.ALIVE && (neighboringLivingCell < 2 || neighboringLivingCell > 3)) {
-            this.state = State.DEAD;
+            return new Cell(State.DEAD);
         }
         if (this.state == State.DEAD && neighboringLivingCell == 3) {
-            this.state = State.ALIVE;
+            return new Cell(State.ALIVE);
         }
-        return this;
+        return new Cell(this.state);
     }
 
     @Override

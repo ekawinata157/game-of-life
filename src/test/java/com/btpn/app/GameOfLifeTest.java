@@ -126,20 +126,4 @@ class GameOfLifeTest {
 
         assertEquals(expected, result);
     }
-
-    @Test
-    void countNeighboringLivingCells_shouldReturn5_whenInputIsCoordinate1And1AndGamePatternIsOscillator() {
-        GameOfLife gameOfLife = new GameOfLife();
-        HashSet<Coordinate> livingCellInput = new HashSet<>();
-        livingCellInput.add(new Coordinate(1, 1));
-        livingCellInput.add(new Coordinate(1, 0));
-        livingCellInput.add(new Coordinate(1, 2));
-        gameOfLife.seed(livingCellInput);
-        System.out.println(gameOfLife.countNeighboringLivingCells(new Coordinate(1,0))); //MATI
-        System.out.println(gameOfLife.countNeighboringLivingCells(new Coordinate(1,1))); //IDUP
-        System.out.println(gameOfLife.countNeighboringLivingCells(new Coordinate(1,2))); //MATI
-        gameOfLife.updateGameState();
-
-        assertTrue(false);
-    }
 }
