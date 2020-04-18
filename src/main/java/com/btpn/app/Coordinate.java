@@ -26,7 +26,9 @@ class Coordinate implements Comparable<Coordinate> {
 
     @Override
     public int hashCode() {
-        int temp = (y + ((x + 1) / 2));
+        final int BIJECTIVE_ADDER = 1;
+        final int BIJECTIVE_DIVIDER = 2;
+        int temp = (y + ((x + BIJECTIVE_ADDER) / BIJECTIVE_DIVIDER));
         return x + (temp * temp);
     }
 

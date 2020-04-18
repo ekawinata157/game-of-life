@@ -81,7 +81,7 @@ class GameOfLife {
             Coordinate currentCoordinate = entry.getKey();
             Cell currentCell = entry.getValue();
             int surroundingLivingCellCount = this.countNeighboringLivingCells(currentCoordinate);
-            Cell updatedCell = currentCell.updateCellState(surroundingLivingCellCount);
+            Cell updatedCell = currentCell.updateState(surroundingLivingCellCount);
             if (!updatedCell.isDead()) {
                 nextGenerationLivingCell.add(currentCoordinate);
             }

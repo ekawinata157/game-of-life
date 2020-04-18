@@ -17,7 +17,7 @@ class Cell {
         return (this.state == State.DEAD);
     }
 
-    Cell updateCellState(int neighboringLivingCell) {
+    Cell updateState(int neighboringLivingCell) {
         if (this.state == State.LIVING && (neighboringLivingCell < 2 || neighboringLivingCell > 3)) {
             return new Cell(State.DEAD);
         }
