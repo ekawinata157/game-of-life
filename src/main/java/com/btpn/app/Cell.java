@@ -38,4 +38,9 @@ class Cell {
     public int hashCode() {
         return Objects.hash(state);
     }
+
+    @Override
+    public String toString() {
+        return this.state.toString();
+    }
 }

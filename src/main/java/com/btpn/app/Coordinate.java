@@ -23,11 +23,13 @@ class Coordinate {
     }
 
     @Override
-    public int hashCode() {
-        return Integer.hashCode(this.x) * Integer.hashCode(this.y);
+    public int hashCode()
+    {
+        int tmp = ( y +  ((x+1)/2));
+        return x +  ( tmp * tmp);
     }
 
-    private Coordinate translate(int xTranslation, int yTranslation) {
+    Coordinate translate(int xTranslation, int yTranslation) {
         return new Coordinate(this.x + xTranslation, this.y + yTranslation);
     }
 
