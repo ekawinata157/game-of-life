@@ -14,10 +14,12 @@ class Cell {
     }
 
     boolean isDead() {
-        return true;
+        return (this.state == State.DEAD);
     }
 
-    void updateCellState(){
-
+    void updateCellState() {
+        if (this.neighboringLivingCell < 2) {
+            this.state = State.DEAD;
+        }
     }
 }

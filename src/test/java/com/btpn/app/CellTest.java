@@ -16,4 +16,24 @@ class CellTest {
 
         assertTrue(result);
     }
+
+    @Test
+    void updateCellState_shouldMakeIsDeadReturnFalse_whenCellIsAliveAndLivingCellNeighborIsTwo() {
+        Cell cell = new Cell(2, State.ALIVE);
+
+        cell.updateCellState();
+        boolean result = cell.isDead();
+
+        assertFalse(result);
+    }
+
+    @Test
+    void updateCellState_shouldMakeIsDeadReturnTrue_whenCellIsAliveAndLivingCellNeighborIsOne() {
+        Cell cell = new Cell(1, State.ALIVE);
+
+        cell.updateCellState();
+        boolean result = cell.isDead();
+
+        assertTrue(result);
+    }
 }
