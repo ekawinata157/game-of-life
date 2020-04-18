@@ -17,13 +17,14 @@ class Cell {
         return (this.state == State.DEAD);
     }
 
-    void updateCellState(int neighboringLivingCell) {
+    Cell updateCellState(int neighboringLivingCell) {
         if (this.state == State.ALIVE && (neighboringLivingCell < 2 || neighboringLivingCell > 3)) {
             this.state = State.DEAD;
         }
         if (this.state == State.DEAD && neighboringLivingCell == 3) {
             this.state = State.ALIVE;
         }
+        return this;
     }
 
     @Override

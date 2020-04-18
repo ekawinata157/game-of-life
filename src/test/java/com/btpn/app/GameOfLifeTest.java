@@ -88,9 +88,58 @@ class GameOfLifeTest {
         String expected = "1,1\n 1,2\n 2,1\n 2,2\n";
 
         gameOfLife.updateGameState();
-        String result = "1,1\n 1,2\n 2,1\n 2,2\n";
+        String result = gameOfLife.toString();
 
         assertEquals(expected, result);
     }
 
+    @Test
+    void updateGameState_shouldMakeToStringReturnTheSameInput_whenInputIsBoatPattern() {
+        GameOfLife gameOfLife = new GameOfLife();
+        HashSet<Coordinate> livingCellInput = new HashSet<>();
+        livingCellInput.add(new Coordinate(0, 1));
+        livingCellInput.add(new Coordinate(1, 0));
+        livingCellInput.add(new Coordinate(2, 1));
+        livingCellInput.add(new Coordinate(0, 2));
+        livingCellInput.add(new Coordinate(1, 2));
+        gameOfLife.seed(livingCellInput);
+        String expected = "0,1\n1,0\n2,1\n0,2\n1,2\n";
+
+        gameOfLife.updateGameState();
+        String result = gameOfLife.toString();
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void updateGameState_shouldMakeToStringReturn1And1_0And1_2And1_whenInputIsOscillatorPattern() {
+        GameOfLife gameOfLife = new GameOfLife();
+        HashSet<Coordinate> livingCellInput = new HashSet<>();
+        livingCellInput.add(new Coordinate(1, 1));
+        livingCellInput.add(new Coordinate(1, 0));
+        livingCellInput.add(new Coordinate(1, 2));
+        gameOfLife.seed(livingCellInput);
+        String expected = "1,1\n0,1\n2,1";
+
+        gameOfLife.updateGameState();
+        String result = gameOfLife.toString();
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void countNeighboringLivingCells_shouldReturn5_whenInputIsCoordinate1And1AndGamePatternIsOscillator() {
+        GameOfLife gameOfLife = new GameOfLife();
+        HashSet<Coordinate> livingCellInput = new HashSet<>();
+        livingCellInput.add(new Coordinate(1, 1));
+        livingCellInput.add(new Coordinate(1, 0));
+        livingCellInput.add(new Coordinate(1, 2));
+        gameOfLife.seed(livingCellInput);
+        System.out.println(gameOfLife.countNeighboringLivingCells(new Coordinate(1,0))); //MATI
+        System.out.println(gameOfLife.countNeighboringLivingCells(new Coordinate(1,1))); //IDUP
+        System.out.println(gameOfLife.countNeighboringLivingCells(new Coordinate(1,2))); //MATI
+        gameOfLife.updateGameState();
+
+        assertTrue(false);
+    }
 }
