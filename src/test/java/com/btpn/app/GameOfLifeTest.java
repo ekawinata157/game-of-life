@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GameOfLifeTest {
@@ -40,5 +41,21 @@ class GameOfLifeTest {
         boolean result = (gameOfLife.countLivingCell() == expectedLivingCellCount) && (gameOfLife.countDeadCell() == expectedDeadCellCount);
         System.out.println(gameOfLife);
         assertTrue(result);
+    }
+
+    @Test
+    void countNeighboringLivingCells_shouldReturn3_whenInputIsCoordinate1And1AndGamePatternIsBlock() {
+        GameOfLife gameOfLife = new GameOfLife();
+        HashSet<Coordinate> livingCellInput = new HashSet<>();
+        livingCellInput.add(new Coordinate(1, 1));
+        livingCellInput.add(new Coordinate(1, 2));
+        livingCellInput.add(new Coordinate(2, 1));
+        livingCellInput.add(new Coordinate(2, 2));
+        gameOfLife.seed(livingCellInput);
+        int expected = 3;
+
+        int result = gameOfLife.countNeighboringLivingCells(new Coordinate(1,1));
+
+        assertEquals(expected, result);
     }
 }

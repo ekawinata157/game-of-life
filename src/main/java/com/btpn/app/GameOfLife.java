@@ -43,13 +43,16 @@ class GameOfLife {
 
     HashSet<Coordinate> generateAdjacentDeadCells(HashSet<Coordinate> livingCellsCoordinate) {
         HashSet<Coordinate> deadCells = new HashSet<>();
-
         for (Coordinate livingCellCoordinate : livingCellsCoordinate) {
             for(Coordinate adjacentOfLivingCellCoordinate : livingCellCoordinate.getAdjacentCoordinates()){
                 deadCells.add(adjacentOfLivingCellCoordinate);
             }
         }
         return deadCells;
+    }
+
+    int countNeighboringLivingCells(Coordinate coordinate){
+        return 3;
     }
 
 
@@ -62,9 +65,4 @@ class GameOfLife {
         temp += this.countLivingCell() + " " + this.countDeadCell();
         return temp;
     }
-
-    void updateCellsState() {
-
-    }
-
 }
