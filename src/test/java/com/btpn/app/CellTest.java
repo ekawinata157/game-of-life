@@ -9,9 +9,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class CellTest {
     @Test
     void updateCellState_shouldMakeIsDeadReturnTrue_whenCellIsAliveAndLivingCellNeighborIsZero() {
-        Cell cell = new Cell(0, State.ALIVE);
+        Cell cell = new Cell(State.ALIVE);
 
-        cell.updateCellState();
+        cell.updateCellState(0);
         boolean result = cell.isDead();
 
         assertTrue(result);
@@ -19,9 +19,9 @@ class CellTest {
 
     @Test
     void updateCellState_shouldMakeIsDeadReturnFalse_whenCellIsAliveAndLivingCellNeighborIsTwo() {
-        Cell cell = new Cell(2, State.ALIVE);
+        Cell cell = new Cell(State.ALIVE);
 
-        cell.updateCellState();
+        cell.updateCellState(2);
         boolean result = cell.isDead();
 
         assertFalse(result);
@@ -29,9 +29,9 @@ class CellTest {
 
     @Test
     void updateCellState_shouldMakeIsDeadReturnTrue_whenCellIsAliveAndLivingCellNeighborIsOne() {
-        Cell cell = new Cell(1, State.ALIVE);
+        Cell cell = new Cell(State.ALIVE);
 
-        cell.updateCellState();
+        cell.updateCellState(1);
         boolean result = cell.isDead();
 
         assertTrue(result);
@@ -39,9 +39,9 @@ class CellTest {
 
     @Test
     void updateCellState_shouldMakeIsDeadReturnTrue_whenCellIsAliveAndLivingCellNeighborIsFour() {
-        Cell cell = new Cell(4, State.ALIVE);
+        Cell cell = new Cell(State.ALIVE);
 
-        cell.updateCellState();
+        cell.updateCellState(4);
         boolean result = cell.isDead();
 
         assertTrue(result);
@@ -49,9 +49,9 @@ class CellTest {
 
     @Test
     void updateCellState_shouldMakeIsDeadReturnTrue_whenCellIsAliveAndLivingCellNeighborIsFive() {
-        Cell cell = new Cell(5, State.ALIVE);
+        Cell cell = new Cell(State.ALIVE);
 
-        cell.updateCellState();
+        cell.updateCellState(5);
         boolean result = cell.isDead();
 
         assertTrue(result);
@@ -59,9 +59,9 @@ class CellTest {
 
     @Test
     void updateCellState_shouldMakeIsDeadReturnFalse_whenCellIsDeadAndLivingCellNeighborIsThree() {
-        Cell cell = new Cell(3, State.DEAD);
+        Cell cell = new Cell(State.DEAD);
 
-        cell.updateCellState();
+        cell.updateCellState(3);
         boolean result = cell.isDead();
 
         assertFalse(result);
