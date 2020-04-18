@@ -1,5 +1,7 @@
 package com.btpn.app;
 
+import javax.xml.transform.stax.StAXResult;
+
 class Cell {
     enum State {
         ALIVE, DEAD;
@@ -18,8 +20,11 @@ class Cell {
     }
 
     void updateCellState() {
-        if (this.neighboringLivingCell < 2) {
+        if (this.state == State.ALIVE && (this.neighboringLivingCell < 2 || this.neighboringLivingCell > 3)) {
             this.state = State.DEAD;
+        }
+        if (this.state == State.DEAD && this.neighboringLivingCell == 3) {
+            this.state = State.ALIVE;
         }
     }
 }
