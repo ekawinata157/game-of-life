@@ -26,10 +26,10 @@ class Coordinate implements Comparable<Coordinate> {
 
     @Override
     public int hashCode() {
-        final int BIJECTIVE_ADDER = 1;
-        final int BIJECTIVE_DIVIDER = 2;
-        int temp = (y + ((x + BIJECTIVE_ADDER) / BIJECTIVE_DIVIDER));
-        return x + (temp * temp);
+        int hash = 31;
+        hash += 31 * hash + Integer.hashCode(this.x);
+        hash += 31 * hash + Integer.hashCode(this.y);
+        return hash;
     }
 
     private Coordinate translate(int xTranslation, int yTranslation) {
