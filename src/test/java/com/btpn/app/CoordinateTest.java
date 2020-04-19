@@ -5,9 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class CoordinateTest {
     @Test
@@ -71,5 +69,29 @@ class CoordinateTest {
         Collections.sort(result);
 
         assertArrayEquals(expected.toArray(), result.toArray());
+    }
+
+    @Test
+    void hashCode_shouldReturnTheSameValue_whenInputIsBoth1And2() {
+        Coordinate coordinate = new Coordinate(1, 2);
+        Coordinate inputCoordinate = new Coordinate(1, 2);
+
+        boolean instanceEquality = coordinate.equals(inputCoordinate);
+        boolean hashCodeEquality = coordinate.hashCode() == inputCoordinate.hashCode();
+        boolean result = instanceEquality && hashCodeEquality;
+
+        assertTrue(result);
+    }
+
+    @Test
+    void hashCode_shouldReturnDifferentValue_whenCoordinateIs2And1AndInputIs1And2() {
+        Coordinate coordinate = new Coordinate(2, 1);
+        Coordinate inputCoordinate = new Coordinate(1, 2);
+
+        boolean instanceEquality = coordinate.equals(inputCoordinate);
+        boolean hashCodeEquality = coordinate.hashCode() == inputCoordinate.hashCode();
+        boolean result = instanceEquality || hashCodeEquality;
+
+        assertFalse(result);
     }
 }
