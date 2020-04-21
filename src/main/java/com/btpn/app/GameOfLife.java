@@ -5,26 +5,6 @@ import java.util.*;
 class GameOfLife {
     private HashMap<Coordinate, Cell> grid = new HashMap<>();
 
-    int countLivingCells() {
-        int count = 0;
-        for (Map.Entry<Coordinate, Cell> entry : grid.entrySet()) {
-            if (!entry.getValue().isDead()) {
-                count++;
-            }
-        }
-        return count;
-    }
-
-    int countDeadCells() {
-        int count = 0;
-        for (Map.Entry<Coordinate, Cell> entry : grid.entrySet()) {
-            if (entry.getValue().isDead()) {
-                count++;
-            }
-        }
-        return count;
-    }
-
     void seed(HashSet<Coordinate> livingCellInputs) {
         this.grid = new HashMap<>();
         HashSet<Coordinate> deadCellsCoordinate = this.generateNeighboringDeadCells(livingCellInputs);
