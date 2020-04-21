@@ -4,43 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GameOfLifeTest {
-    @Test
-    void countNeighboringLivingCells_shouldReturn3_whenInputIsCoordinate1And1AndGamePatternIsBlock() {
-        GameOfLife gameOfLife = new GameOfLife();
-        HashSet<Coordinate> livingCellInput = new HashSet<>();
-        livingCellInput.add(new Coordinate(1, 1));
-        livingCellInput.add(new Coordinate(1, 2));
-        livingCellInput.add(new Coordinate(2, 1));
-        livingCellInput.add(new Coordinate(2, 2));
-        gameOfLife.seed(livingCellInput);
-        int expected = 3;
-
-        int result = gameOfLife.countNeighboringLivingCells(new Coordinate(1, 1));
-
-        assertEquals(expected, result);
-    }
-
-    @Test
-    void countNeighboringLivingCells_shouldReturn5_whenInputIsCoordinate1And1AndGamePatternIsBoat() {
-        GameOfLife gameOfLife = new GameOfLife();
-        HashSet<Coordinate> livingCellInput = new HashSet<>();
-        livingCellInput.add(new Coordinate(0, 1));
-        livingCellInput.add(new Coordinate(1, 0));
-        livingCellInput.add(new Coordinate(2, 1));
-        livingCellInput.add(new Coordinate(0, 2));
-        livingCellInput.add(new Coordinate(1, 2));
-        gameOfLife.seed(livingCellInput);
-        int expected = 5;
-
-        int result = gameOfLife.countNeighboringLivingCells(new Coordinate(1, 1));
-
-        assertEquals(expected, result);
-    }
-
     @Test
     void promptNextGeneration_shouldMakeToStringReturnTheSameInput_whenInputIsBlockPattern() {
         GameOfLife gameOfLife = new GameOfLife();

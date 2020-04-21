@@ -26,7 +26,7 @@ class GameOfLife {
         return deadCells;
     }
 
-    int countNeighboringLivingCells(Coordinate coordinate) {
+    private int countNeighboringLivingCells(Coordinate coordinate) {
         int count = 0;
         for (Coordinate neighboringCellCoordinate : coordinate.getNeighboringCoordinates()) {
             Cell cellToCheck = grid.get(neighboringCellCoordinate);
