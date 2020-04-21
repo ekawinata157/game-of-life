@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -34,7 +35,7 @@ class CoordinateTest {
     @Test
     void getNeighboringCoordinates_shouldReturn0And1_1And1_1And0_1AndMinus1_0AndMinus1_Minus1AndMinus1_Minus1And0_Minus1And1_whenInputCoordinateIs0And0() {
         Coordinate coordinate = new Coordinate(0, 0);
-        ArrayList<Coordinate> expected = new ArrayList<>();
+        HashSet<Coordinate> expected = new HashSet<>();
         expected.add(new Coordinate(0, 1));
         expected.add(new Coordinate(1, 1));
         expected.add(new Coordinate(1, 0));
@@ -43,18 +44,16 @@ class CoordinateTest {
         expected.add(new Coordinate(-1, -1));
         expected.add(new Coordinate(-1, 0));
         expected.add(new Coordinate(-1, 1));
-        Collections.sort(expected);
 
-        ArrayList<Coordinate> result = coordinate.getNeighboringCoordinates();
-        Collections.sort(result);
+        boolean result = coordinate.getNeighboringCoordinates().equals(expected);
 
-        assertArrayEquals(expected.toArray(), result.toArray());
+        assertTrue(result);
     }
 
     @Test
     void getNeighboringCoordinates_shouldReturn1And2_2And2_2And1_2And0_1And0_0And0_0And1_0And2_whenInputCoordinateIs1And1() {
         Coordinate coordinate = new Coordinate(1, 1);
-        ArrayList<Coordinate> expected = new ArrayList<>();
+        HashSet<Coordinate> expected = new HashSet<>();
         expected.add(new Coordinate(1, 2));
         expected.add(new Coordinate(2, 2));
         expected.add(new Coordinate(2, 1));
@@ -63,12 +62,10 @@ class CoordinateTest {
         expected.add(new Coordinate(0, 0));
         expected.add(new Coordinate(0, 1));
         expected.add(new Coordinate(0, 2));
-        Collections.sort(expected);
 
-        ArrayList<Coordinate> result = coordinate.getNeighboringCoordinates();
-        Collections.sort(result);
+        boolean result = coordinate.getNeighboringCoordinates().equals(expected);
 
-        assertArrayEquals(expected.toArray(), result.toArray());
+        assertTrue(result);
     }
 
     @Test
