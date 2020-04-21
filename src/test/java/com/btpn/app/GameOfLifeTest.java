@@ -84,12 +84,16 @@ class GameOfLifeTest {
         livingCellInput.add(new Coordinate(1, 2));
         livingCellInput.add(new Coordinate(2, 1));
         livingCellInput.add(new Coordinate(2, 2));
-        String expected = "1,1\n1,2\n2,1\n2,2\n";
+        HashSet<Coordinate> expectedLivingCellOutput = new HashSet<>();
+        expectedLivingCellOutput.add(new Coordinate(1, 1));
+        expectedLivingCellOutput.add(new Coordinate(1, 2));
+        expectedLivingCellOutput.add(new Coordinate(2, 1));
+        expectedLivingCellOutput.add(new Coordinate(2, 2));
 
         gameOfLife.promptNextGeneration(livingCellInput);
-        String result = gameOfLife.toString();
+        boolean result = gameOfLife.getLivingCellsCoordinate().equals(expectedLivingCellOutput);
 
-        assertEquals(expected, result);
+        assertTrue(result);
     }
 
     @Test
@@ -101,12 +105,17 @@ class GameOfLifeTest {
         livingCellInput.add(new Coordinate(2, 1));
         livingCellInput.add(new Coordinate(0, 2));
         livingCellInput.add(new Coordinate(1, 2));
-        String expected = "0,1\n0,2\n1,0\n1,2\n2,1\n";
+        HashSet<Coordinate> expectedLivingCellOutput = new HashSet<>();
+        expectedLivingCellOutput.add(new Coordinate(0, 1));
+        expectedLivingCellOutput.add(new Coordinate(0, 2));
+        expectedLivingCellOutput.add(new Coordinate(1, 0));
+        expectedLivingCellOutput.add(new Coordinate(1, 2));
+        expectedLivingCellOutput.add(new Coordinate(2, 1));
 
         gameOfLife.promptNextGeneration(livingCellInput);
-        String result = gameOfLife.toString();
+        boolean result = gameOfLife.getLivingCellsCoordinate().equals(expectedLivingCellOutput);
 
-        assertEquals(expected, result);
+        assertTrue(result);
     }
 
     @Test
@@ -116,12 +125,15 @@ class GameOfLifeTest {
         livingCellInput.add(new Coordinate(1, 1));
         livingCellInput.add(new Coordinate(1, 0));
         livingCellInput.add(new Coordinate(1, 2));
-        String expected = "0,1\n1,1\n2,1\n";
+        HashSet<Coordinate> expectedLivingCellOutput = new HashSet<>();
+        expectedLivingCellOutput.add(new Coordinate(0, 1));
+        expectedLivingCellOutput.add(new Coordinate(1, 1));
+        expectedLivingCellOutput.add(new Coordinate(2, 1));
 
         gameOfLife.promptNextGeneration(livingCellInput);
-        String result = gameOfLife.toString();
+        boolean result = gameOfLife.getLivingCellsCoordinate().equals(expectedLivingCellOutput);
 
-        assertEquals(expected, result);
+        assertTrue(result);
     }
 
     @Test
@@ -134,11 +146,17 @@ class GameOfLifeTest {
         livingCellInput.add(new Coordinate(2, 2));
         livingCellInput.add(new Coordinate(2, 3));
         livingCellInput.add(new Coordinate(2, 4));
-        String expected = "0,2\n1,1\n1,4\n2,1\n2,4\n3,3\n";
+        HashSet<Coordinate> expectedLivingCellOutput = new HashSet<>();
+        expectedLivingCellOutput.add(new Coordinate(0, 2));
+        expectedLivingCellOutput.add(new Coordinate(1, 1));
+        expectedLivingCellOutput.add(new Coordinate(1, 4));
+        expectedLivingCellOutput.add(new Coordinate(2, 1));
+        expectedLivingCellOutput.add(new Coordinate(2, 4));
+        expectedLivingCellOutput.add(new Coordinate(3, 3));
 
         gameOfLife.promptNextGeneration(livingCellInput);
-        String result = gameOfLife.toString();
+        boolean result = gameOfLife.getLivingCellsCoordinate().equals(expectedLivingCellOutput);
 
-        assertEquals(expected, result);
+        assertTrue(result);
     }
 }

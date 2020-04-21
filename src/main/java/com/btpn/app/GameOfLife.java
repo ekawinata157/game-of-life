@@ -7,7 +7,7 @@ class GameOfLife {
 
     int countLivingCells() {
         int count = 0;
-        for (HashMap.Entry<Coordinate, Cell> entry : grid.entrySet()) {
+        for (Map.Entry<Coordinate, Cell> entry : grid.entrySet()) {
             if (!entry.getValue().isDead()) {
                 count++;
             }
@@ -17,7 +17,7 @@ class GameOfLife {
 
     int countDeadCells() {
         int count = 0;
-        for (HashMap.Entry<Coordinate, Cell> entry : grid.entrySet()) {
+        for (Map.Entry<Coordinate, Cell> entry : grid.entrySet()) {
             if (entry.getValue().isDead()) {
                 count++;
             }
@@ -60,13 +60,7 @@ class GameOfLife {
     @Override
     public String toString() {
         StringBuilder livingCells = new StringBuilder();
-        ArrayList<Coordinate> livingCellsCoordinate = new ArrayList<>();
-        for (HashMap.Entry<Coordinate, Cell> entry : grid.entrySet()) {
-            if (!entry.getValue().isDead()) {
-                livingCellsCoordinate.add(entry.getKey());
-            }
-        }
-        Collections.sort(livingCellsCoordinate);
+        HashSet<Coordinate> livingCellsCoordinate = this.getLivingCellsCoordinate();
         for (Coordinate coordinate : livingCellsCoordinate) {
             livingCells.append(coordinate);
             livingCells.append("\n");
@@ -74,9 +68,19 @@ class GameOfLife {
         return livingCells.toString();
     }
 
+    HashSet<Coordinate> getLivingCellsCoordinate() {
+        HashSet<Coordinate> livingCellsCoordinate = new HashSet<>();
+        for (Map.Entry<Coordinate, Cell> entry : grid.entrySet()) {
+            if (!entry.getValue().isDead()) {
+                livingCellsCoordinate.add(entry.getKey());
+            }
+        }
+        return livingCellsCoordinate;
+    }
+
     private void updateGameState() {
         HashSet<Coordinate> nextGenerationLivingCell = new HashSet<>();
-        for (HashMap.Entry<Coordinate, Cell> entry : grid.entrySet()) {
+        for (Map.Entry<Coordinate, Cell> entry : grid.entrySet()) {
             Coordinate currentCoordinate = entry.getKey();
             Cell currentCell = entry.getValue();
             int surroundingLivingCellCount = this.countNeighboringLivingCells(currentCoordinate);

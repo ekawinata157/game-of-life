@@ -2,7 +2,7 @@ package com.btpn.app;
 
 import java.util.ArrayList;
 
-class Coordinate implements Comparable<Coordinate> {
+class Coordinate {
     private int x;
     private int y;
 
@@ -52,13 +52,5 @@ class Coordinate implements Comparable<Coordinate> {
     @Override
     public String toString() {
         return this.x + "," + this.y;
-    }
-
-    @Override
-    public int compareTo(Coordinate coordinate) {
-        if (this.x == coordinate.x) {
-            return Integer.compare(this.y, coordinate.y);
-        }
-        return Integer.compare(this.x, coordinate.x);
     }
 }
