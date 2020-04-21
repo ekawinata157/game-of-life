@@ -5,7 +5,7 @@ import java.util.*;
 class GameOfLife {
     private HashMap<Coordinate, Cell> grid = new HashMap<>();
 
-    void seed(HashSet<Coordinate> livingCellInputs) {
+    private void seed(HashSet<Coordinate> livingCellInputs) {
         this.grid = new HashMap<>();
         HashSet<Coordinate> deadCellsCoordinate = this.generateNeighboringDeadCells(livingCellInputs);
         for (Coordinate livingCellCoordinate : livingCellInputs) {
