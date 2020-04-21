@@ -1,11 +1,10 @@
 package com.btpn.app;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 
 class Coordinate {
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
 
     Coordinate(int x, int y) {
         this.x = x;
