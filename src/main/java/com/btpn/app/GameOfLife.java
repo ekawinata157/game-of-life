@@ -59,10 +59,6 @@ class GameOfLife {
     }
 
     private void updateGameState() {
-        this.seed(this.updateGrid());
-    }
-
-    private HashSet<Coordinate> updateGrid() {
         HashSet<Coordinate> nextGenerationLivingCell = new HashSet<>();
         for (Map.Entry<Coordinate, Cell> entry : grid.entrySet()) {
             Coordinate currentCoordinate = entry.getKey();
@@ -73,7 +69,7 @@ class GameOfLife {
                 nextGenerationLivingCell.add(currentCoordinate);
             }
         }
-        return nextGenerationLivingCell;
+        this.seed(nextGenerationLivingCell);
     }
 
     void promptNextGeneration(HashSet<Coordinate> livingCellsCoordinateInput) {
