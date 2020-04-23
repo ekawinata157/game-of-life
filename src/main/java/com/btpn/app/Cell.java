@@ -1,35 +1,31 @@
 package com.btpn.app;
 
 class Cell {
-    private enum State {
-        LIVING, DEAD
-    }
+    private boolean isLiving;
 
-    private State state;
-
-    private Cell(State state) {
-        this.state = state;
+    private Cell(boolean isLiving) {
+        this.isLiving = isLiving;
     }
 
     static Cell createLivingCell() {
-        return new Cell(State.LIVING);
+        return new Cell(true);
     }
 
     static Cell createDeadCell() {
-        return new Cell(State.DEAD);
+        return new Cell(false);
     }
 
     boolean isDead() {
-        return (this.state == State.DEAD);
+        return (!this.isLiving);
     }
 
     Cell updateState(int neighboringLivingCell) {
-        if (this.state == State.LIVING && (neighboringLivingCell < 2 || neighboringLivingCell > 3)) {
-            return new Cell(State.DEAD);
+        if (this.isLiving && (neighboringLivingCell < 2 || neighboringLivingCell > 3)) {
+            return new Cell(false);
         }
-        if (this.state == State.DEAD && neighboringLivingCell == 3) {
-            return new Cell(State.LIVING);
+        if (!this.isLiving && neighboringLivingCell == 3) {
+            return new Cell(true);
         }
-        return new Cell(this.state);
+        return new Cell(this.isLiving);
     }
 }
