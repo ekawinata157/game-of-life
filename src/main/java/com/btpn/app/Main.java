@@ -4,7 +4,8 @@ public class Main {
     public static void main(String[] args) {
         GameOfLife gameOfLife = new GameOfLife();
         InputParser inputParser = new InputParser();
-        gameOfLife.promptNextGeneration(inputParser.handleLivingCellsCoordinateInput());
+        gameOfLife.seed(inputParser.handleLivingCellsCoordinateInput());
+        gameOfLife.updateGameState();
         System.out.println(gameOfLife);
     }
 }

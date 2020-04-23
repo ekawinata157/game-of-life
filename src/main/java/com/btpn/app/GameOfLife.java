@@ -5,7 +5,7 @@ import java.util.*;
 class GameOfLife {
     private HashMap<Coordinate, Cell> grid = new HashMap<>();
 
-    private void seed(HashSet<Coordinate> livingCellInputs) {
+    void seed(HashSet<Coordinate> livingCellInputs) {
         this.grid = new HashMap<>();
         HashSet<Coordinate> deadCellsCoordinate = this.generateNeighboringDeadCells(livingCellInputs);
         for (Coordinate livingCellCoordinate : livingCellInputs) {
@@ -58,7 +58,7 @@ class GameOfLife {
         return livingCellsCoordinate;
     }
 
-    private void updateGameState() {
+    void updateGameState() {
         HashSet<Coordinate> nextGenerationLivingCell = new HashSet<>();
         for (Map.Entry<Coordinate, Cell> entry : grid.entrySet()) {
             Coordinate currentCoordinate = entry.getKey();
@@ -70,10 +70,5 @@ class GameOfLife {
             }
         }
         this.seed(nextGenerationLivingCell);
-    }
-
-    void promptNextGeneration(HashSet<Coordinate> livingCellsCoordinateInput) {
-        this.seed(livingCellsCoordinateInput);
-        updateGameState();
     }
 }

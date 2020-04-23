@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GameOfLifeTest {
     @Test
-    void promptNextGeneration_shouldMakeToStringReturnTheSameInput_whenInputIsBlockPattern() {
+    void updateGameState_shouldMakeToStringReturnTheSameInput_whenInputIsBlockPattern() {
         GameOfLife gameOfLife = new GameOfLife();
         HashSet<Coordinate> livingCellInput = new HashSet<>();
         livingCellInput.add(new Coordinate(1, 1));
@@ -20,15 +20,16 @@ class GameOfLifeTest {
         expectedLivingCellOutput.add(new Coordinate(1, 2));
         expectedLivingCellOutput.add(new Coordinate(2, 1));
         expectedLivingCellOutput.add(new Coordinate(2, 2));
+        gameOfLife.seed(livingCellInput);
 
-        gameOfLife.promptNextGeneration(livingCellInput);
+        gameOfLife.updateGameState();
         boolean result = gameOfLife.getLivingCellsCoordinate().equals(expectedLivingCellOutput);
 
         assertTrue(result);
     }
 
     @Test
-    void promptNextGeneration_shouldMakeToStringReturnTheSameInput_whenInputIsBoatPattern() {
+    void updateGameState_shouldMakeToStringReturnTheSameInput_whenInputIsBoatPattern() {
         GameOfLife gameOfLife = new GameOfLife();
         HashSet<Coordinate> livingCellInput = new HashSet<>();
         livingCellInput.add(new Coordinate(0, 1));
@@ -42,15 +43,16 @@ class GameOfLifeTest {
         expectedLivingCellOutput.add(new Coordinate(1, 0));
         expectedLivingCellOutput.add(new Coordinate(1, 2));
         expectedLivingCellOutput.add(new Coordinate(2, 1));
+        gameOfLife.seed(livingCellInput);
 
-        gameOfLife.promptNextGeneration(livingCellInput);
+        gameOfLife.updateGameState();
         boolean result = gameOfLife.getLivingCellsCoordinate().equals(expectedLivingCellOutput);
 
         assertTrue(result);
     }
 
     @Test
-    void promptNextGeneration_shouldMakeToStringReturn1And1_0And1_2And1_whenInputIsOscillatorPattern() {
+    void updateGameState_shouldMakeToStringReturn1And1_0And1_2And1_whenInputIsOscillatorPattern() {
         GameOfLife gameOfLife = new GameOfLife();
         HashSet<Coordinate> livingCellInput = new HashSet<>();
         livingCellInput.add(new Coordinate(1, 1));
@@ -60,15 +62,16 @@ class GameOfLifeTest {
         expectedLivingCellOutput.add(new Coordinate(0, 1));
         expectedLivingCellOutput.add(new Coordinate(1, 1));
         expectedLivingCellOutput.add(new Coordinate(2, 1));
+        gameOfLife.seed(livingCellInput);
 
-        gameOfLife.promptNextGeneration(livingCellInput);
+        gameOfLife.updateGameState();
         boolean result = gameOfLife.getLivingCellsCoordinate().equals(expectedLivingCellOutput);
 
         assertTrue(result);
     }
 
     @Test
-    void promptNextGeneration_shouldMakeToStringReturn0And2_1And1_1And4_2And1_2And4_3And3_whenInputIsToadPattern() {
+    void updateGameState_shouldMakeToStringReturn0And2_1And1_1And4_2And1_2And4_3And3_whenInputIsToadPattern() {
         GameOfLife gameOfLife = new GameOfLife();
         HashSet<Coordinate> livingCellInput = new HashSet<>();
         livingCellInput.add(new Coordinate(1, 1));
@@ -84,8 +87,9 @@ class GameOfLifeTest {
         expectedLivingCellOutput.add(new Coordinate(2, 1));
         expectedLivingCellOutput.add(new Coordinate(2, 4));
         expectedLivingCellOutput.add(new Coordinate(3, 3));
+        gameOfLife.seed(livingCellInput);
 
-        gameOfLife.promptNextGeneration(livingCellInput);
+        gameOfLife.updateGameState();
         boolean result = gameOfLife.getLivingCellsCoordinate().equals(expectedLivingCellOutput);
 
         assertTrue(result);
