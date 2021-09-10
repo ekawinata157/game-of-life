@@ -5,9 +5,9 @@ import java.util.*;
 class GameOfLife {
     private HashMap<Coordinate, Cell> grid = new HashMap<>();
 
-    void seed(HashSet<Coordinate> livingCellInputs) {
+    void seed(Set<Coordinate> livingCellInputs) {
         this.grid = new HashMap<>();
-        HashSet<Coordinate> deadCellsCoordinate = this.generateNeighboringDeadCells(livingCellInputs);
+        Set<Coordinate> deadCellsCoordinate = this.generateNeighboringDeadCells(livingCellInputs);
         for (Coordinate livingCellCoordinate : livingCellInputs) {
             grid.put(livingCellCoordinate, Cell.createLivingCell());
         }
@@ -18,8 +18,8 @@ class GameOfLife {
         }
     }
 
-    private HashSet<Coordinate> generateNeighboringDeadCells(HashSet<Coordinate> livingCellsCoordinate) {
-        HashSet<Coordinate> deadCells = new HashSet<>();
+    private Set<Coordinate> generateNeighboringDeadCells(Set<Coordinate> livingCellsCoordinate) {
+        Set<Coordinate> deadCells = new HashSet<>();
         for (Coordinate livingCellCoordinate : livingCellsCoordinate) {
             deadCells.addAll(livingCellCoordinate.getNeighboringCoordinates());
         }
@@ -40,7 +40,7 @@ class GameOfLife {
     @Override
     public String toString() {
         StringBuilder livingCells = new StringBuilder();
-        HashSet<Coordinate> livingCellsCoordinate = this.getLivingCellsCoordinate();
+        Set<Coordinate> livingCellsCoordinate = this.getLivingCellsCoordinate();
         for (Coordinate coordinate : livingCellsCoordinate) {
             livingCells.append(coordinate);
             livingCells.append("\n");
@@ -48,8 +48,8 @@ class GameOfLife {
         return livingCells.toString();
     }
 
-    HashSet<Coordinate> getLivingCellsCoordinate() {
-        HashSet<Coordinate> livingCellsCoordinate = new HashSet<>();
+    Set<Coordinate> getLivingCellsCoordinate() {
+        Set<Coordinate> livingCellsCoordinate = new HashSet<>();
         for (Map.Entry<Coordinate, Cell> entry : grid.entrySet()) {
             if (!entry.getValue().isDead()) {
                 livingCellsCoordinate.add(entry.getKey());
@@ -59,7 +59,7 @@ class GameOfLife {
     }
 
     void updateGameState() {
-        HashSet<Coordinate> nextGenerationLivingCell = new HashSet<>();
+        Set<Coordinate> nextGenerationLivingCell = new HashSet<>();
         for (Map.Entry<Coordinate, Cell> entry : grid.entrySet()) {
             Coordinate currentCoordinate = entry.getKey();
             Cell currentCell = entry.getValue();

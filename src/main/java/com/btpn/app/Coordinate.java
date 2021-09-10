@@ -1,6 +1,7 @@
 package com.btpn.app;
 
 import java.util.HashSet;
+import java.util.Set;
 
 class Coordinate {
     private final int x;
@@ -36,8 +37,8 @@ class Coordinate {
         return new Coordinate(this.x + xTranslation, this.y + yTranslation);
     }
 
-    HashSet<Coordinate> getNeighboringCoordinates() {
-        HashSet<Coordinate> neighboringCoordinates = new HashSet<>();
+    Set<Coordinate> getNeighboringCoordinates() {
+        Set<Coordinate> neighboringCoordinates = new HashSet<>();
         neighboringCoordinates.add(this.translate(1, 0));
         neighboringCoordinates.add(this.translate(1, -1));
         neighboringCoordinates.add(this.translate(0, -1));
